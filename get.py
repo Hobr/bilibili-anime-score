@@ -45,12 +45,12 @@ if os.path.getsize("bilibili_bangumi.db") != 0: # 数据库已创建
     lastid = cursor.fetchone()
     print(lastid[0])
     if lastid[0] < 7000 :
-    for i in range(lastid[0]+1, 7000):
-        bilibili_rating(i)
-        print(i)
-    for i in range(20000, 23000):
-        bilibili_rating(i)
-        print(i)
+        for i in range(lastid[0]+1, 7000):
+            bilibili_rating(i)
+            print(i)
+        for i in range(20000, 23000):
+            bilibili_rating(i)
+            print(i)
 
     elif lastid[0] > 7000 and lastid[0] < 23000:
         for i in range(lastid[0]+1, 23000):
