@@ -37,7 +37,7 @@ def bilibili_rating(bangumi_id):
     except KeyError:
         return None
 
-if os.path.getsize("bilibili_bangumi.db") != 0: # 数据库已创建
+if os.path.getsize("bilibili_bangumi.db") >= 0.001: # 数据库已创建
     conn = sqlite3.connect("bilibili_bangumi.db")
     cursor = conn.cursor()
     session = requests.session()
