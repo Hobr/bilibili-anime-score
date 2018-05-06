@@ -2,9 +2,9 @@
 
 利用bilibili前端用到的json接口获取Bilibili动画评分并保存到数据库
 
-# 使用
+## 使用
 
-```bash
+``` bash
 > git clone https://github.com/Hobr/bilibili-anime-score.git
 > pip install requests
 > cd bilibili-anime-score
