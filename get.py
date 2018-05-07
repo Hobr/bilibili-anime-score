@@ -14,18 +14,18 @@ def bilibili_rating(bangumi_id):
     data = json.loads(response.text[19:-2])
     try:
 
-        area = "\"{0}\"".format(data["result"]["area"]) #地区
-        cover = "\"{0}\"".format(data["result"]["cover"]) #logo
-        danmaku_count = int(data["result"]["danmaku_count"]) #弹幕
-        evaluate = "\"{0}\"".format(data["result"]["evaluate"][0:60].replace('\"','')) #介绍
-        favorites = int(data["result"]["favorites"]) #追番
-        is_finish = int(data["result"]["is_finish"]) #完结
-        count = float(data["result"]["media"]["rating"]["score"]) #人数
-        score = int(data["result"]["media"]["rating"]["count"]) #分数
-        title = "\"{0}\"".format(data["result"]["media"]["title"]) #名称
-        play_count = int(data["result"]["play_count"]) #播放量
-        season_id = int(data["result"]["season_id"]) #seasonid
-        share_url = "\"{0}\"".format(data["result"]["share_url"]) #链接
+        area = "\"{0}\"".format(data["result"]["area"]) # 地区
+        cover = "\"{0}\"".format(data["result"]["cover"]) # logo
+        danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
+        evaluate = "\"{0}\"".format(data["result"]["evaluate"][0:60].replace('\"','')) # 介绍
+        favorites = int(data["result"]["favorites"]) # 追番
+        is_finish = int(data["result"]["is_finish"]) # 完结
+        count = float(data["result"]["media"]["rating"]["score"]) # 人数
+        score = int(data["result"]["media"]["rating"]["count"]) # 分数
+        title = "\"{0}\"".format(data["result"]["media"]["title"]) # 名称
+        play_count = int(data["result"]["play_count"]) # 播放量
+        season_id = int(data["result"]["season_id"]) # seasonid
+        share_url = "\"{0}\"".format(data["result"]["share_url"]) # 链接
 
         print(season_id, title, score, count,area)
         try:
