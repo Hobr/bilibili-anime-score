@@ -6,8 +6,11 @@
 
 ``` bash
 > git clone https://github.com/Hobr/bilibili-anime-score.git
+
 > pip install requests
+
 > cd bilibili-anime-score
+
 > python3 get.py
 ```
 
