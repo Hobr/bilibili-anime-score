@@ -6,7 +6,7 @@ import json
 import sqlite3
 import os
 
-url = "https://bangumi.bilibili.com/jsonp/seasoninfo/{0}.ver"
+url = "https://www.biliplus.com/api/bangumi?season={0}"
 
 def bilibili_rating(bangumi_id):
     payload = {"callback": "seasonListCallback"}
