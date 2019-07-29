@@ -14,22 +14,25 @@ def bilibili_rating(bangumi_id):
     if int(data["code"]) == 10:
         pass
     else:    
-        area = "\"{0}\"".format(data["result"]["area"]) # 地区
-        danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
-        favorites = int(data["result"]["favorites"]) # 追番
-        is_finish = int(data["result"]["is_finish"]) # 完结
-        count = int(data["result"]["media"]["rating"]["count"]) # 人数
-        score = float(data["result"]["media"]["rating"]["score"]) # 分数
-        title = "\"{0}\"".format(data["result"]["media"]["title"]) # 名称
-        play_count = int(data["result"]["play_count"]) # 播放量
-        season_id = int(data["result"]["season_id"]) # seasonid
-        print(season_id, title, score, count,area)
         try:
-            cursor.execute("insert into bangumi values ({0}, {1}, {2}, {3}, {4},{5},{6},{7},{8})"
-                           .format(season_id, title, score, count, is_finish,favorites,area,danmaku_count,play_count))
-            conn.commit()
-        except sqlite3.IntegrityError:
-            pass
+            area = "\"{0}\"".format(data["result"]["area"]) # 地区
+            danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
+            favorites = int(data["result"]["favorites"]) # 追番
+            is_finish = int(data["result"]["is_finish"]) # 完结
+            count = int(data["result"]["media"]["rating"]["count"]) # 人数
+            score = float(data["result"]["media"]["rating"]["score"]) # 分数
+            title = "\"{0}\"".format(data["result"]["media"]["title"]) # 名称
+            play_count = int(data["result"]["play_count"]) # 播放量
+            season_id = int(data["result"]["season_id"]) # seasonid
+            print(season_id, title, score, count,area)
+            try:
+                cursor.execute("insert into bangumi values ({0}, {1}, {2}, {3}, {4},{5},{6},{7},{8})"
+                            .format(season_id, title, score, count, is_finish,favorites,area,danmaku_count,play_count))
+                conn.commit()
+            except sqlite3.IntegrityError:
+                pass
+        except KeyError:
+            return None
 
 if os.path.getsize("bilibili_bangumi.db") >= 2: # 数据库已创建
     conn = sqlite3.connect("bilibili_bangumi.db")
