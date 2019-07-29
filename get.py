@@ -42,7 +42,8 @@ if os.path.getsize("bilibili_bangumi.db") >= 2: # 数据库已创建
     cursor = conn.cursor()
     session = requests.session()
     cursor.execute("select MAX(season_id) from bangumi_20171107")
-    lastid = int(cursor.fetchone())
+    lid = cursor.fetchone()
+    lastid = int(lid)
     print(lastid[0])
     if lastid[0] < 7000 :
         for i in range(lastid[0]+1, 7000):
