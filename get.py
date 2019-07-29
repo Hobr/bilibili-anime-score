@@ -5,10 +5,12 @@ import requests
 import json
 import sqlite3
 import os
+import time
 
 apiurl = "https://www.biliplus.com/api/bangumi?season={0}"
 
 def bilibili_rating(bangumi_id):
+    time.sleep(2)
     response = requests.get(apiurl.format(bangumi_id))
     data = json.loads(response.text)
     if int(data["code"]) == 10:
