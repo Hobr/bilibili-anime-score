@@ -18,8 +18,8 @@ def bilibili_rating(bangumi_id):
         danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
         favorites = int(data["result"]["favorites"]) # 追番
         is_finish = int(data["result"]["is_finish"]) # 完结
-        count = float(data["result"]["media"]["rating"]["score"]) # 人数
-        score = int(data["result"]["media"]["rating"]["count"]) # 分数
+        count = int(data["result"]["media"]["rating"]["count"]) # 人数
+        score = float(data["result"]["media"]["rating"]["score"]) # 分数
         title = "\"{0}\"".format(data["result"]["media"]["title"]) # 名称
         play_count = int(data["result"]["play_count"]) # 播放量
         season_id = int(data["result"]["season_id"]) # seasonid
