@@ -64,7 +64,7 @@ else: # 数据库未创建
     conn = sqlite3.connect("bilibili_bangumi.db")
     cursor = conn.cursor()
     cursor.execute("create table bangumi (season_id int primary key, "
-                "title varchar(255), score float, count int, is_finish int, favorites int,area varchar(40), danmaku_count int, playcount int")
+                "title varchar(255), score float, count int, is_finish int, favorites int,area varchar(40), danmaku_count int, playcount int)")
                 #         名称         分数           人数        完结            追番         国家地区              弹幕                播放量
     session = requests.session()
     for i in range(0, 7000):
