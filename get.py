@@ -11,9 +11,8 @@ url = "https://bangumi.bilibili.com/jsonp/seasoninfo/{0}.ver"
 def bilibili_rating(bangumi_id):
     payload = {"callback": "seasonListCallback"}
     response = requests.get(url.format(bangumi_id), params=payload)
-    data = json.loads(response.text[19:-2])
     try:
-
+        data = json.loads(response.text[19:-2])
         area = "\"{0}\"".format(data["result"]["area"]) # 地区
         cover = "\"{0}\"".format(data["result"]["cover"]) # logo
         danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
