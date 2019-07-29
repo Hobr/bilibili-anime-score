@@ -6,13 +6,14 @@ import json
 import sqlite3
 import os
 
-url = "https://www.biliplus.com/api/bangumi?season={0}"
+apiurl = "https://www.biliplus.com/api/bangumi?season={0}"
 
 def bilibili_rating(bangumi_id):
-    payload = {"callback": "seasonListCallback"}
-    response = requests.get(url.format(bangumi_id), params=payload)
-    data = json.loads(response.text[19:-2])
-    try:
+    response = requests.get(apiurl.format(bangumi_id))
+    data = json.loads(response.text)
+    if int(data["code"]) == 10:
+        pass
+    else:    
         area = "\"{0}\"".format(data["result"]["area"]) # 地区
         danmaku_count = int(data["result"]["danmaku_count"]) # 弹幕
         favorites = int(data["result"]["favorites"]) # 追番
@@ -29,8 +30,6 @@ def bilibili_rating(bangumi_id):
             conn.commit()
         except sqlite3.IntegrityError:
             pass
-    except KeyError:
-        return None
 
 if os.path.getsize("bilibili_bangumi.db") >= 2: # 数据库已创建
     conn = sqlite3.connect("bilibili_bangumi.db")
